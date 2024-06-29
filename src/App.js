@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router,Route,Routes } from 'react-router-dom';
+// import {Switch} from "react-router-dom";
+import Login from './components/Login';
+import Register from './components/Register';
+import ReportLitter from './components/ReportLitter';
+import AdminDashboard from './components/AdminDashboard';
+import CollectorDashboard from './components/CollectorDashboard';
+import Schedule from './components/Schedule';
+import SpecialPickupRequest from './components/SpecialPickupRequest';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      {/* <Switch> */}
+      <Routes>
+      <Route exact path="/login" Component={Login} />
+        <Route exact path="/register" Component={Register} />
+        <Route path="/report" Component={ReportLitter} />
+        <Route path="/admin" Component={AdminDashboard} />
+        <Route path="/collector" Component={CollectorDashboard} />
+        <Route path="/schedule" Component={Schedule} />
+        <Route path="/special-pickup" Component={SpecialPickupRequest} />
+      </Routes>
+        
+      {/* </Switch> */}
+    </Router>
   );
-}
+};
 
 export default App;
